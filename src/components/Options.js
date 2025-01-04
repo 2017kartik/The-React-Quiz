@@ -1,4 +1,7 @@
-export default function ({ questions, dispatch, answer }) {
+import { useQuiz } from "../context/QuizContext";
+
+export default function ({ questions }) {
+  const { dispatch, answer } = useQuiz();
   const hasAnswered = answer !== null;
   return (
     <>
@@ -8,7 +11,7 @@ export default function ({ questions, dispatch, answer }) {
             className={`btn btn-option ${index === answer ? "answer" : ""} ${
               hasAnswered
                 ? index === questions.correctOption
-                  ? "correct"
+                  ? "correct" 
                   : "wrong"
                 : ""
             }`}
@@ -21,5 +24,5 @@ export default function ({ questions, dispatch, answer }) {
         ))}
       </div>
     </>
-  );    
+  );
 }
